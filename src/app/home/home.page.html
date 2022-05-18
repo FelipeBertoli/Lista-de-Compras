@@ -1,31 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Compras
+      Lista de Compras
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content [fullscreen]="true">
-  <ion-row>
+  <ion-row >
     <ion-col>
-      <ion-input placeholder="Digite algo..."></ion-input>
+      <ion-input [(ngModel)]="variavel" placeholder="Digite algo..."></ion-input>
     </ion-col>
-    <ion-col size="2.9">
+    <ion-col size="2.9" >
         <ion-fab-button size="small" color="success">
-          <ion-icon name="add"></ion-icon>
+          <ion-icon name="add" (click)="adicionar()"></ion-icon>
         </ion-fab-button>
     </ion-col>
   </ion-row>
-  <ion-list>
-    <ion-item>
-      <ion-label>Feijão</ion-label>
-      <ion-button color="danger"><ion-icon name="trash-bin-outline"></ion-icon></ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pão de Queijo</ion-label>
-      <ion-button color="danger"><ion-icon name="trash-bin-outline"></ion-icon></ion-button>
+  <ion-list >
+    <ion-item  style="background:black" *ngFor="let item of lista">
+      <ion-checkbox slot="start" [(ngModel)]="item.feito"></ion-checkbox>
+      <ion-label>{{item.nome}}</ion-label>
+      <ion-button color="danger" (click)="remover()"><ion-icon name="trash-bin-outline"></ion-icon></ion-button>
     </ion-item>
   </ion-list>
 </ion-content>
